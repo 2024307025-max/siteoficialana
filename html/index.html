@@ -1,13 +1,396 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>PetLove</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-yEPZ7jP9S0QKiUQ0m3jjsO4ProIW7wvR9gXkI7JOGa2XVsw53Yke2bsdkBbjmmiX" crossorigin="anonymous">
-  </head>
-  <body>
-    <h1>Hello, world!</h1>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js" integrity="sha384-WyOxWvTyr1QaMPfiPJSv76iReVthorl5uWlFtZPyK0IEB0hGzo9y5Bp9mYanr8Bu" crossorigin="anonymous"></script>
-  </body>
-</html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PetLove</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-yEPZ7jP9S0QKiUQ0m3jjsO4ProIW7wvR9gXkI7JOGa2XVsw53Yke2bsdkBbjmmiX" crossorigin="anonymous">
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #E6D6FF;
+    }
+
+    /* cor do menu e do rodape */
+    .navbar, footer {
+      background-color: #4B0082;
+    }
+
+    h2 {
+      color: #4B0082;
+    }
+
+    /* cores dos slides do carrossel */
+    .slide1 { background-color: #4B0082; }
+    .slide2 { background-color: #652888; }
+    .slide3 { background-color: #7b3fa8; }
+
+    /* todos os slides do carrossel com o mesmo tamanho */
+    .carousel-item {
+      height: 520px;
+    }
+
+    .carousel-item .container {
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .carousel-item .row {
+      width: 100%;
+    }
+
+    .carousel-item img {
+      max-height: 340px;
+    }
+
+    /* no celular o slide fica mais alto porque a imagem vai embaixo do texto */
+    @media (max-width: 767px) {
+      .carousel-item {
+        height: 600px;
+      }
+
+      .carousel-item img {
+        max-height: 220px;
+      }
+    }
+
+    /* tamanho das imagens dos cards */
+    .foto {
+      height: 300px;
+      object-fit: cover;
+    }
+
+    /* efeito de transicao nos cards e botoes */
+    .card, .btn {
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+    }
+
+    /* botoes roxos */
+    .btn-roxo {
+      background-color: #4B0082;
+      color: white;
+    }
+
+    .btn-roxo:hover {
+      background-color: #652888;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- MENU -->
+  <nav class="navbar navbar-expand-md navbar-dark sticky-top">
+    <div class="container">
+      <!-- logo -->
+      <a class="navbar-brand fw-bold" href="#inicio">PetLove 🐾</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#inicio">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#servicos">Serviços</a></li>
+          <li class="nav-item"><a class="nav-link" href="#pets">Adoção e Venda</a></li>
+          <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CARROSSEL -->
+  <section id="inicio">
+    <div id="carrossel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carrossel" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#carrossel" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#carrossel" data-bs-slide-to="2"></button>
+      </div>
+
+      <div class="carousel-inner">
+
+        <div class="carousel-item active slide1 text-white">
+          <div class="container py-5">
+            <div class="row align-items-center">
+              <div class="col-md-8 text-center text-md-start">
+                <h1>Onde o amor encontra o cuidado profissional</h1>
+                <p>Estética, consultas, castração e hospedagem. Tudo que seu pet precisa em só um lugar!</p>
+                <a href="#servicos" class="btn btn-warning">Conheça os serviços</a>
+              </div>
+              <div class="col-6 col-md-3 mx-auto mt-4 mt-md-0">
+                <img src="../img/cachorrinho.jpg" class="img-fluid rounded" alt="Cachorrinho Mimoso">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item slide2 text-white">
+          <div class="container py-5">
+            <div class="row align-items-center">
+              <div class="col-md-8 text-center text-md-start">
+                <h1>Banho, tosa e hospedagem VIP</h1>
+                <p>Suítes monitoradas 24h e tempo de recreação garantido para o seu pet.</p>
+                <a href="#contato" class="btn btn-warning">Marcar visita</a>
+              </div>
+              <div class="col-6 col-md-3 mx-auto mt-4 mt-md-0">
+                <img src="../img/cachorro.jpg" class="img-fluid rounded" alt="Lulu da Pomerânia Deco">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item slide3 text-white">
+          <div class="container py-5">
+            <div class="row align-items-center">
+              <div class="col-md-8 text-center text-md-start">
+                <h1>Adote com amor</h1>
+                <p>Eles estão à espera de um lar cheio de amor! Conheça os pets para adoção.</p>
+                <a href="#pets" class="btn btn-warning">Ver pets</a>
+              </div>
+              <div class="col-6 col-md-3 mx-auto mt-4 mt-md-0">
+                <img src="../img/calopsita.jpg" class="img-fluid rounded" alt="Calopsita Coquinha">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#carrossel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carrossel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+  </section>
+
+  <!-- SERVICOS (cards) -->
+  <section id="servicos" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Nossos Serviços</h2>
+      <div class="row">
+
+        <div class="col-md-6 col-lg-3 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Banho e Tosa</h5>
+              <p class="card-text">Higiene profunda com produtos de alta qualidade, secagem silenciosa para reduzir o estresse e tosagem profissional.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Hospedagem VIP</h5>
+              <p class="card-text">Suítes monitoradas 24h e tempo de recreação garantido.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Consultas Médicas</h5>
+              <p class="card-text">Consultas, vacinação e exames preventivos com foco na medicina humanizada.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Castração</h5>
+              <p class="card-text">Procedimentos cirúrgicos com monitoramento anestésico avançado.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PETS PARA ADOCAO E VENDA (cards com imagem) -->
+  <section id="pets" class="py-5 bg-white">
+    <div class="container">
+      <h2 class="text-center mb-4">Adoção e Venda</h2>
+      <div class="row">
+
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <img src="../img/calopsita.jpg" class="card-img-top foto" alt="Calopsita Coquinha">
+            <div class="card-body">
+              <span class="badge bg-success">Adoção</span>
+              <h5 class="card-title mt-2">Coquinha</h5>
+              <p class="card-text">Calopsita muito falante e meiga.</p>
+              <p class="card-text"><b>Gratuito</b></p>
+              <a href="#contato" class="btn btn-roxo">Quero Adotar</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <img src="../img/cachorrinho.jpg" class="card-img-top foto" alt="Cachorrinho Mimoso">
+            <div class="card-body">
+              <span class="badge bg-success">Adoção</span>
+              <h5 class="card-title mt-2">Mimoso</h5>
+              <p class="card-text">Cachorrinho carente e fofinho.</p>
+              <p class="card-text"><b>Gratuito</b></p>
+              <a href="#contato" class="btn btn-roxo">Quero Adotar</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <img src="../img/cachorro.jpg" class="card-img-top foto" alt="Lulu da Pomerânia Deco">
+            <div class="card-body">
+              <span class="badge bg-secondary">Animal de raça</span>
+              <h5 class="card-title mt-2">Deco</h5>
+              <p class="card-text">Lulu da Pomerânia com pedigree.</p>
+              <p class="card-text"><b>R$ 4.500,00</b></p>
+              <a href="#contato" class="btn btn-roxo">Tenho Interesse</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section id="sobre" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Nosso Amor pelos Animais</h2>
+      <div class="row align-items-center">
+        <div class="col-8 col-md-4 mx-auto mb-4">
+          <img src="../img/cachorro.jpg" class="img-fluid rounded-circle" alt="Deco, o Lulu da Pomerânia">
+        </div>
+        <div class="col-md-8">
+          <p>Fundado em 2008, o PetLove nasceu da dificuldade de encontrar um lugar que tratasse animais com o mesmo respeito e carinho que recebem em casa. Ao longo desses anos, evoluímos de um pequeno consultório para um centro de estética e saúde referência.</p>
+
+          <!-- texto que abre e fecha com transicao -->
+          <button class="btn btn-roxo mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#leiaMais">
+            Nossa missão
+          </button>
+          <div class="collapse" id="leiaMais">
+            <p>O nosso compromisso diário é assegurar que a relação entre os humanos e os animais seja pautada pelo cuidado preventivo e pelo afeto. Queremos ser o porto seguro para o seu pet em todas as fases da sua vida.</p>
+          </div>
+
+          <div class="row text-center">
+            <div class="col-4">
+              <div class="card p-2">
+                <h3>2008</h3>
+                <p class="mb-0">ano de fundação</p>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="card p-2">
+                <h3>24h</h3>
+                <p class="mb-0">suítes monitoradas</p>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="card p-2">
+                <h3>4</h3>
+                <p class="mb-0">serviços</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO (formulario) -->
+  <section id="contato" class="py-5 bg-white">
+    <div class="container">
+      <h2 class="text-center mb-2">Fale com a gente!</h2>
+      <p class="text-center mb-4">Marque consulta conosco e venha dar ao seu pet o cuidado que ele merece.</p>
+
+      <div class="row">
+        <div class="col-md-7 mb-4">
+          <form id="formulario">
+            <div class="mb-3">
+              <label for="nome" class="form-label">Nome completo</label>
+              <input type="text" class="form-control" id="nome" placeholder="Digite seu nome">
+              <div class="invalid-feedback">Digite pelo menos 3 letras.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">E-mail</label>
+              <input type="text" class="form-control" id="email" placeholder="seuemail@exemplo.com">
+              <div class="invalid-feedback">Digite um e-mail válido.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="mensagem" class="form-label">O que deseja?</label>
+              <textarea class="form-control" id="mensagem" rows="5" placeholder="Conte a necessidade do seu pet"></textarea>
+              <div class="invalid-feedback">A mensagem precisa ter pelo menos 10 letras.</div>
+            </div>
+
+            <button type="submit" class="btn btn-roxo w-100">Enviar</button>
+          </form>
+        </div>
+
+        <div class="col-md-5 mb-4">
+          <h5>Informações de Acesso</h5>
+          <ul>
+            <li>Av. Pequeno Príncipe, 1500 - Bairro Campeche, Florianópolis - SC</li>
+            <li>Telefone/Whatsapp: <a href="https://wa.me/5554996950017" target="_blank">(54) 99695-0017</a></li>
+            <li>E-mail: <a href="mailto:contato@petlove.com.br">contato@petlove.com.br</a></li>
+          </ul>
+
+          <h5>Horários de Atendimento</h5>
+          <ul>
+            <li>Segunda a Sexta: 07:00 às 19:00</li>
+            <li>Sábados: 08:00 às 16:00</li>
+            <li>Domingos: plantão exclusivo para hóspedes e emergências via contato telefônico.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RODAPE -->
+  <footer class="text-white text-center py-4">
+    <div class="container">
+      <h5>PetLove 🐾</h5>
+      <p>
+        Contato:
+        <a href="mailto:contato@petlove.com.br" class="text-white">contato@petlove.com.br</a>
+        |
+        Whatsapp:
+        <a href="https://wa.me/5554996950017" target="_blank" class="text-white">(54) 99695-0017</a>
+      </p>
+      <p class="mb-0">© 2026 Ana Carolina. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- MODAL de sucesso -->
+  <div class="modal fade" id="modalSucesso" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Tudo certo!</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          Mensagem enviada com sucesso! Em breve entraremos em contato.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss=
